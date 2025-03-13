@@ -1,13 +1,28 @@
 import { createdBy, updatedBy } from "@/shared/author";
-import type { CollectionConfig } from "payload";
+import { CollectionConfig } from "payload";
 
-export const Media: CollectionConfig = {
-  slug: "media",
+export const Notes: CollectionConfig = {
+  slug: "notes",
+  admin: { useAsTitle: "title" },
   fields: [
     {
-      name: "alt",
+      name: "title",
+      label: "Title",
       type: "text",
       required: true,
+    },
+    {
+      name: "content",
+      label: "Content",
+      type: "textarea",
+      required: true,
+    },
+    {
+      name: "tags",
+      label: "Tags",
+      type: "relationship",
+      relationTo: "note-tags",
+      hasMany: true,
     },
     createdBy,
     updatedBy,
@@ -35,7 +50,6 @@ export const Media: CollectionConfig = {
         if (args.req.user.role === "admin") return true;
       }
       if (args.req.user.collection === "agents") return true;
-
       return false;
     },
     delete: (args) => {
@@ -47,7 +61,6 @@ export const Media: CollectionConfig = {
       return false;
     },
   },
-  upload: true,
-  versions: { drafts: true, maxPerDoc: 0 },
   timestamps: true,
+  versions: { drafts: true, maxPerDoc: 0 },
 };

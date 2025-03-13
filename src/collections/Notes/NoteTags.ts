@@ -1,13 +1,23 @@
 import { createdBy, updatedBy } from "@/shared/author";
-import type { CollectionConfig } from "payload";
+import { CollectionConfig } from "payload";
 
-export const Media: CollectionConfig = {
-  slug: "media",
+export const NoteTags: CollectionConfig = {
+  slug: "note-tags",
+  admin: { useAsTitle: "displayName" },
   fields: [
     {
-      name: "alt",
+      name: "slug",
       type: "text",
       required: true,
+      unique: true,
+      index: true,
+    },
+    {
+      name: "displayName",
+      type: "text",
+      required: true,
+      unique: true,
+      index: true,
     },
     createdBy,
     updatedBy,
@@ -47,7 +57,6 @@ export const Media: CollectionConfig = {
       return false;
     },
   },
-  upload: true,
-  versions: { drafts: true, maxPerDoc: 0 },
   timestamps: true,
+  versions: { drafts: true, maxPerDoc: 0 },
 };

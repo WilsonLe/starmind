@@ -1,24 +1,22 @@
 import { createdBy, updatedBy } from "@/shared/author";
 import type { CollectionConfig } from "payload";
 
-export const Media: CollectionConfig = {
-  slug: "media",
-  fields: [
-    {
-      name: "alt",
-      type: "text",
-      required: true,
-    },
-    createdBy,
-    updatedBy,
-  ],
+export const Agents: CollectionConfig = {
+  slug: "agents",
+  auth: {
+    useAPIKey: true,
+    disableLocalStrategy: true,
+  },
+  fields: [createdBy, updatedBy],
   access: {
     create: (args) => {
       if (!args.req.user) return false;
       if (args.req.user.collection === "users") {
         if (args.req.user.role === "admin") return true;
       }
-      if (args.req.user.collection === "agents") return true;
+      if (args.req.user.collection === "agents") {
+        return { id: { equals: args.req.user.id } };
+      }
       return false;
     },
     read: (args) => {
@@ -26,7 +24,9 @@ export const Media: CollectionConfig = {
       if (args.req.user.collection === "users") {
         if (args.req.user.role === "admin") return true;
       }
-      if (args.req.user.collection === "agents") return true;
+      if (args.req.user.collection === "agents") {
+        return { id: { equals: args.req.user.id } };
+      }
       return false;
     },
     update: (args) => {
@@ -34,8 +34,9 @@ export const Media: CollectionConfig = {
       if (args.req.user.collection === "users") {
         if (args.req.user.role === "admin") return true;
       }
-      if (args.req.user.collection === "agents") return true;
-
+      if (args.req.user.collection === "agents") {
+        return { id: { equals: args.req.user.id } };
+      }
       return false;
     },
     delete: (args) => {
@@ -43,11 +44,12 @@ export const Media: CollectionConfig = {
       if (args.req.user.collection === "users") {
         if (args.req.user.role === "admin") return true;
       }
-      if (args.req.user.collection === "agents") return true;
+      if (args.req.user.collection === "agents") {
+        return { id: { equals: args.req.user.id } };
+      }
       return false;
     },
   },
-  upload: true,
   versions: { drafts: true, maxPerDoc: 0 },
   timestamps: true,
 };
