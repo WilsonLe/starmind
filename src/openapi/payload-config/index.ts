@@ -57,11 +57,12 @@ export const analyzePayload = async (
   );
 
   return {
-    servers: [
-      {
-        url: `${payloadConfig.serverURL}${payloadConfig.routes.api || "/api"}`,
-      },
-    ],
+    servers:
+      typeof process.env.OPENAPI_SERVER_URLS === "string"
+        ? process.env.OPENAPI_SERVER_URLS.split(",")
+            .map((s) => s.trim())
+            .map((url) => ({ url }))
+        : [{ url: "http://localhost:3000/api" }],
     paths,
     components,
   };

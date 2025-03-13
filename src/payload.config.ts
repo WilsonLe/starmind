@@ -10,6 +10,7 @@ import { Notes } from "./collections/Notes/Notes";
 import { NoteTags } from "./collections/Notes/NoteTags";
 import { Users } from "./collections/Users";
 import { migrations } from "./migrations";
+import { openApiSpecEndpoint } from "./openapi/openapi-spec-endpoint";
 
 const filename = fileURLToPath(import.meta.url);
 const dirname = path.dirname(filename);
@@ -43,5 +44,5 @@ export default buildConfig({
     locales: ["en"],
     defaultLocale: "en",
   },
-  serverURL: process.env.SERVER_URL || "http://localhost:3000",
+  endpoints: [openApiSpecEndpoint],
 });

@@ -14,7 +14,8 @@
     "payload": "cross-env NODE_OPTIONS=--no-deprecation payload",
     "start": "cross-env NODE_OPTIONS=--no-deprecation next start",
     "format": "prettier --write src",
-    "generate:openapi": "tsx src/generate-openapi.ts"
+    "generate:openapi": "tsx src/generate-openapi.ts",
+    "package": "tar -czvf starmind.tar.gz .next/standalone"
   },
   "dependencies": {
     "@payloadcms/db-sqlite": "3.28.1",
