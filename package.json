@@ -15,7 +15,10 @@
     "start": "cross-env NODE_OPTIONS=--no-deprecation next start",
     "format": "prettier --write src",
     "generate:openapi": "tsx src/generate-openapi.ts",
-    "package": "tar -czvf starmind.tar.gz .next/standalone"
+    "package": "tar -czvf starmind.tar.gz .next/standalone",
+    "transfer": "scp -r starmind.tar.gz starmind:starmind",
+    "restart:prod": "ssh starmind 'systemctl restart starmind'",
+    "ship": "pnpm build && pnpm package && pnpm transfer && pnpm restart:prod"
   },
   "dependencies": {
     "@payloadcms/db-sqlite": "3.28.1",
