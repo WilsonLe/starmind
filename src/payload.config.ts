@@ -43,4 +43,5 @@ export default buildConfig({
     locales: ["en"],
     defaultLocale: "en",
   },
+  serverURL: process.env.SERVER_URL || "http://localhost:3000",
 });

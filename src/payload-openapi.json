@@ -10668,7 +10668,7 @@
   },
   "servers": [
     {
-      "url": "/api"
+      "url": "https://starmind.wilsonle.me/api"
     }
   ]
 }

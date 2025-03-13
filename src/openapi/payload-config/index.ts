@@ -57,7 +57,11 @@ export const analyzePayload = async (
   );
 
   return {
-    servers: [{ url: payloadConfig.routes.api || "/api" }],
+    servers: [
+      {
+        url: `${payloadConfig.serverURL}${payloadConfig.routes.api || "/api"}`,
+      },
+    ],
     paths,
     components,
   };
