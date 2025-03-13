@@ -1,3 +1,4 @@
+import { collectionSpecificOpenApiEndpoint } from "@/shared/collection-specific-openapi-endpoint";
 import type { CollectionConfig } from "payload";
 
 export const Users: CollectionConfig = {
@@ -50,4 +51,5 @@ export const Users: CollectionConfig = {
   },
   versions: { drafts: true, maxPerDoc: 0 },
   timestamps: true,
+  endpoints: [collectionSpecificOpenApiEndpoint({ pathStartsWith: "/users" })],
 };

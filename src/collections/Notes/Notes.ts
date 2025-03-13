@@ -1,4 +1,5 @@
 import { createdBy, updatedBy } from "@/shared/author";
+import { collectionSpecificOpenApiEndpoint } from "@/shared/collection-specific-openapi-endpoint";
 import { CollectionConfig } from "payload";
 
 export const Notes: CollectionConfig = {
@@ -65,5 +66,6 @@ export const Notes: CollectionConfig = {
     },
   },
   timestamps: true,
+  endpoints: [collectionSpecificOpenApiEndpoint({ pathStartsWith: "/notes" })],
   versions: { drafts: true, maxPerDoc: 0 },
 };

@@ -1,3 +1,4 @@
+import { OpenAPIV3 } from "openapi-types";
 import {
   BasePayload as OriginalBasePayload,
   RequestContext as OriginalRequestContext,

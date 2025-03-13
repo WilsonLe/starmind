@@ -1,4 +1,5 @@
 import { createdBy, updatedBy } from "@/shared/author";
+import { collectionSpecificOpenApiEndpoint } from "@/shared/collection-specific-openapi-endpoint";
 import type { CollectionConfig } from "payload";
 
 export const Agents: CollectionConfig = {
@@ -51,5 +52,6 @@ export const Agents: CollectionConfig = {
     },
   },
   versions: { drafts: true, maxPerDoc: 0 },
+  endpoints: [collectionSpecificOpenApiEndpoint({ pathStartsWith: "/agents" })],
   timestamps: true,
 };

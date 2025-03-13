@@ -1,4 +1,5 @@
 import { createdBy, updatedBy } from "@/shared/author";
+import { collectionSpecificOpenApiEndpoint } from "@/shared/collection-specific-openapi-endpoint";
 import type { CollectionConfig } from "payload";
 
 export const Media: CollectionConfig = {
@@ -50,5 +51,6 @@ export const Media: CollectionConfig = {
   },
   upload: true,
   versions: { drafts: true, maxPerDoc: 0 },
+  endpoints: [collectionSpecificOpenApiEndpoint({ pathStartsWith: "/media" })],
   timestamps: true,
 };

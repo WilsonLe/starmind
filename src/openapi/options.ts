@@ -20,6 +20,7 @@ export interface RawOptions {
     passwordRecovery?: boolean;
     preferences?: boolean;
     custom?: boolean;
+    collectionPaths?: string[];
   };
   /**
    * Payload version is automatically determined.
@@ -41,6 +42,7 @@ export interface Options {
     passwordRecovery: boolean;
     preferences: boolean;
     custom: boolean;
+    collectionPaths?: string[];
   };
   supports: {
     bulkOperations: boolean;

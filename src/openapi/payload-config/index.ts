@@ -17,7 +17,6 @@ export const analyzePayload = async (
     createPreferenceRoutes(options);
   const { paths: accessPath, components: accessComponents } =
     createAccessRoute(options);
-
   const collectionDefinitions = await Promise.all(
     payloadConfig.collections
       .filter((collection) => collection.slug !== "payload-preferences")

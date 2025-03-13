@@ -1,5 +1,3 @@
-import path from "path";
-
 export interface Version {
   major: number;
   minor: number;
@@ -32,9 +30,7 @@ export const supports = (
 
 export const getPayloadVersion = async (): Promise<Version | undefined> => {
   try {
-    const { version } = await import(
-      path.join(process.cwd(), "node_modules/payload/package.json")
-    );
+    const { version } = await import("node_modules/payload/package.json");
     return version ? toVersion(version) : undefined;
   } catch (e) {
     return undefined;

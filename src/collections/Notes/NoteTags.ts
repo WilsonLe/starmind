@@ -1,4 +1,5 @@
 import { createdBy, updatedBy } from "@/shared/author";
+import { collectionSpecificOpenApiEndpoint } from "@/shared/collection-specific-openapi-endpoint";
 import { CollectionConfig } from "payload";
 
 export const NoteTags: CollectionConfig = {
@@ -61,6 +62,9 @@ export const NoteTags: CollectionConfig = {
       return false;
     },
   },
+  endpoints: [
+    collectionSpecificOpenApiEndpoint({ pathStartsWith: "/note-tags" }),
+  ],
   timestamps: true,
   versions: { drafts: true, maxPerDoc: 0 },
 };
