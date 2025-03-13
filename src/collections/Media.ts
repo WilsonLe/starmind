@@ -1,5 +1,5 @@
-import { createdBy, updatedBy } from "@/shared/author";
 import { collectionSpecificOpenApiEndpoint } from "@/shared/collection-specific-openapi-endpoint";
+import { createdByUsers, updatedByUsers } from "@/shared/user-authors";
 import type { CollectionConfig } from "payload";
 
 export const Media: CollectionConfig = {
@@ -11,8 +11,8 @@ export const Media: CollectionConfig = {
       type: "text",
       required: true,
     },
-    createdBy,
-    updatedBy,
+    createdByUsers,
+    updatedByUsers,
   ],
   access: {
     create: (args) => {

@@ -171,27 +171,11 @@ export interface Agent {
   /**
    * The creator of the note, could be a user or an agent
    */
-  createdBy:
-    | {
-        relationTo: 'users';
-        value: number | User;
-      }
-    | {
-        relationTo: 'agents';
-        value: number | Agent;
-      };
+  createdByUsers?: (number | null) | User;
   /**
    * The updator of the note, could be a user or an agent
    */
-  updatedBy:
-    | {
-        relationTo: 'users';
-        value: number | User;
-      }
-    | {
-        relationTo: 'agents';
-        value: number | Agent;
-      };
+  updatedByUsers?: (number | null) | Agent;
   updatedAt: string;
   createdAt: string;
   _status?: ('draft' | 'published') | null;
@@ -209,27 +193,11 @@ export interface Media {
   /**
    * The creator of the note, could be a user or an agent
    */
-  createdBy:
-    | {
-        relationTo: 'users';
-        value: number | User;
-      }
-    | {
-        relationTo: 'agents';
-        value: number | Agent;
-      };
+  createdByUsers?: (number | null) | User;
   /**
    * The updator of the note, could be a user or an agent
    */
-  updatedBy:
-    | {
-        relationTo: 'users';
-        value: number | User;
-      }
-    | {
-        relationTo: 'agents';
-        value: number | Agent;
-      };
+  updatedByUsers?: (number | null) | Agent;
   updatedAt: string;
   createdAt: string;
   _status?: ('draft' | 'published') | null;
@@ -264,27 +232,19 @@ export interface Note {
   /**
    * The creator of the note, could be a user or an agent
    */
-  createdBy:
-    | {
-        relationTo: 'users';
-        value: number | User;
-      }
-    | {
-        relationTo: 'agents';
-        value: number | Agent;
-      };
+  createdByUsers?: (number | null) | User;
   /**
    * The updator of the note, could be a user or an agent
    */
-  updatedBy:
-    | {
-        relationTo: 'users';
-        value: number | User;
-      }
-    | {
-        relationTo: 'agents';
-        value: number | Agent;
-      };
+  updatedByUsers?: (number | null) | Agent;
+  /**
+   * The creator of the note, could be a user or an agent
+   */
+  createdByAgents?: (number | null) | Agent;
+  /**
+   * The updator of the note, could be a user or an agent
+   */
+  updatedByAgents?: (number | null) | Agent;
   updatedAt: string;
   createdAt: string;
   _status?: ('draft' | 'published') | null;
@@ -306,27 +266,19 @@ export interface NoteTag {
   /**
    * The creator of the note, could be a user or an agent
    */
-  createdBy:
-    | {
-        relationTo: 'users';
-        value: number | User;
-      }
-    | {
-        relationTo: 'agents';
-        value: number | Agent;
-      };
+  createdByUsers?: (number | null) | User;
   /**
    * The updator of the note, could be a user or an agent
    */
-  updatedBy:
-    | {
-        relationTo: 'users';
-        value: number | User;
-      }
-    | {
-        relationTo: 'agents';
-        value: number | Agent;
-      };
+  updatedByUsers?: (number | null) | Agent;
+  /**
+   * The creator of the note, could be a user or an agent
+   */
+  createdByAgents?: (number | null) | Agent;
+  /**
+   * The updator of the note, could be a user or an agent
+   */
+  updatedByAgents?: (number | null) | Agent;
   updatedAt: string;
   createdAt: string;
   _status?: ('draft' | 'published') | null;
@@ -433,8 +385,8 @@ export interface UsersSelect<T extends boolean = true> {
  * via the `definition` "agents_select".
  */
 export interface AgentsSelect<T extends boolean = true> {
-  createdBy?: T;
-  updatedBy?: T;
+  createdByUsers?: T;
+  updatedByUsers?: T;
   updatedAt?: T;
   createdAt?: T;
   _status?: T;
@@ -448,8 +400,8 @@ export interface AgentsSelect<T extends boolean = true> {
  */
 export interface MediaSelect<T extends boolean = true> {
   alt?: T;
-  createdBy?: T;
-  updatedBy?: T;
+  createdByUsers?: T;
+  updatedByUsers?: T;
   updatedAt?: T;
   createdAt?: T;
   _status?: T;
@@ -471,8 +423,10 @@ export interface NotesSelect<T extends boolean = true> {
   title?: T;
   content?: T;
   tags?: T;
-  createdBy?: T;
-  updatedBy?: T;
+  createdByUsers?: T;
+  updatedByUsers?: T;
+  createdByAgents?: T;
+  updatedByAgents?: T;
   updatedAt?: T;
   createdAt?: T;
   _status?: T;
@@ -484,8 +438,10 @@ export interface NotesSelect<T extends boolean = true> {
 export interface NoteTagsSelect<T extends boolean = true> {
   slug?: T;
   displayName?: T;
-  createdBy?: T;
-  updatedBy?: T;
+  createdByUsers?: T;
+  updatedByUsers?: T;
+  createdByAgents?: T;
+  updatedByAgents?: T;
   updatedAt?: T;
   createdAt?: T;
   _status?: T;

@@ -1,5 +1,6 @@
-import { createdBy, updatedBy } from "@/shared/author";
+import { createdByAgents, updatedByAgents } from "@/shared/agent-authors";
 import { collectionSpecificOpenApiEndpoint } from "@/shared/collection-specific-openapi-endpoint";
+import { createdByUsers, updatedByUsers } from "@/shared/user-authors";
 import { CollectionConfig } from "payload";
 
 export const NoteTags: CollectionConfig = {
@@ -24,8 +25,10 @@ export const NoteTags: CollectionConfig = {
       unique: true,
       index: true,
     },
-    createdBy,
-    updatedBy,
+    createdByUsers,
+    updatedByUsers,
+    createdByAgents,
+    updatedByAgents,
   ],
   access: {
     create: (args) => {

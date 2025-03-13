@@ -1,5 +1,5 @@
-import { createdBy, updatedBy } from "@/shared/author";
 import { collectionSpecificOpenApiEndpoint } from "@/shared/collection-specific-openapi-endpoint";
+import { createdByUsers, updatedByUsers } from "@/shared/user-authors";
 import type { CollectionConfig } from "payload";
 
 export const Agents: CollectionConfig = {
@@ -8,7 +8,7 @@ export const Agents: CollectionConfig = {
     useAPIKey: true,
     disableLocalStrategy: true,
   },
-  fields: [createdBy, updatedBy],
+  fields: [createdByUsers, updatedByUsers],
   access: {
     create: (args) => {
       if (!args.req.user) return false;

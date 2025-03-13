@@ -71,6 +71,7 @@ export const createVersionRoutes = async (
     [rootPath]: {
       get: {
         summary: `${singular} versions`,
+        operationId: `get-many-${plural.toLowerCase()}-versions`,
         description: `Find and query paginated versions of ${plural}`,
         tags,
         security,
@@ -83,6 +84,7 @@ export const createVersionRoutes = async (
     [`${rootPath}/{id}`]: {
       get: {
         summary: `Get a single ${singular} version by its id`,
+        operationId: `get-single-${singular.toLowerCase()}-version`,
         description: `Get a single ${singular} version by its id`,
         tags,
         security,
@@ -104,6 +106,7 @@ export const createVersionRoutes = async (
       },
       post: {
         summary: `Restore a ${singular} version by its id`,
+        operationId: `restore-single-${singular.toLowerCase()}-version`,
         description: `Restore a ${singular} version by its id`,
         tags,
         security: await getRouteAccess(config, "update", options.access),

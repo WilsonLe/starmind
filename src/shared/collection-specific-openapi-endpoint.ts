@@ -7,12 +7,14 @@ export const collectionSpecificOpenApiEndpoint = ({
   includeDuplicatePaths = false,
   includePreviewPaths = false,
   includeTrailingSlashPaths = false,
+  includeCountPaths = false,
 }: {
   pathStartsWith: string;
   includeAccessPaths?: boolean;
   includeDuplicatePaths?: boolean;
   includePreviewPaths?: boolean;
   includeTrailingSlashPaths?: boolean;
+  includeCountPaths?: boolean;
 }): Endpoint => ({
   method: "get",
   path: "/openapi.json",
@@ -30,6 +32,12 @@ export const collectionSpecificOpenApiEndpoint = ({
             return acc;
           }
           if (!includeTrailingSlashPaths && path.endsWith("/")) {
+            return acc;
+          }
+          if (!includeCountPaths && path.endsWith("/count")) {
+            return acc;
+          }
+          if (path.endsWith("openapi.json")) {
             return acc;
           }
           acc[path] = req.payload.openApiDoc.paths[path];

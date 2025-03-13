@@ -33,7 +33,7 @@ export const getMainRoutes = async (
       ...includeIfAvailable(collection, "read", {
         get: {
           summary: `Find paginated ${plural}`,
-          operationId: `find-${plural.toLowerCase()}`,
+          operationId: `find-many-${plural.toLowerCase()}`,
           description: `Find paginated ${plural}`,
           tags: [collection.slug],
           security: await getRouteAccess(collection, "read", options.access),
@@ -46,7 +46,7 @@ export const getMainRoutes = async (
       ...includeIfAvailable(collection, "create", {
         post: {
           summary: `Create a new ${singleItem}`,
-          operationId: `create-${singleItem.toLowerCase()}`,
+          operationId: `create-single-${singleItem.toLowerCase()}`,
           description: `Create a new ${singleItem}`,
           tags: [collection.slug],
           security: await getRouteAccess(collection, "create", options.access),
@@ -62,7 +62,7 @@ export const getMainRoutes = async (
       ...includeIfAvailable(collection, "read", {
         get: {
           summary: `Get a single ${singleItem} by its id`,
-          operationId: `get-${singleItem.toLowerCase()}`,
+          operationId: `get-single-${singleItem.toLowerCase()}`,
           description: `Get a single ${singleItem} by its id`,
           tags: [collection.slug],
           security: await getRouteAccess(collection, "read", options.access),
@@ -86,7 +86,7 @@ export const getMainRoutes = async (
       ...includeIfAvailable(collection, "update", {
         patch: {
           summary: `Updates a ${singleItem}`,
-          operationId: `update-${singleItem.toLowerCase()}`,
+          operationId: `update-single-${singleItem.toLowerCase()}`,
           description: `Updates a ${singleItem}`,
           tags: [collection.slug],
           security: await getRouteAccess(collection, "update", options.access),
@@ -110,7 +110,7 @@ export const getMainRoutes = async (
       ...includeIfAvailable(collection, "delete", {
         delete: {
           summary: `Deletes an existing ${singleItem}`,
-          operationId: `delete-${singleItem.toLowerCase()}`,
+          operationId: `delete-single-${singleItem.toLowerCase()}`,
           description: `Deletes an existing ${singleItem}`,
           tags: [collection.slug],
           security: await getRouteAccess(collection, "delete", options.access),
