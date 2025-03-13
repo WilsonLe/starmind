@@ -10,7 +10,8 @@ import { Notes } from "./collections/Notes/Notes";
 import { NoteTags } from "./collections/Notes/NoteTags";
 import { Users } from "./collections/Users";
 import { migrations } from "./migrations";
-import { openApiSpecEndpoint } from "./openapi/openapi-spec-endpoint";
+import { createDocument } from "./openapi";
+import { openApiSpecEndpoint } from "./openapi/openapi-endpoint";
 
 const filename = fileURLToPath(import.meta.url);
 const dirname = path.dirname(filename);
@@ -43,6 +44,9 @@ export default buildConfig({
   localization: {
     locales: ["en"],
     defaultLocale: "en",
+  },
+  onInit: async (payload) => {
+    payload.openApiDoc = await createDocument(payload.config);
   },
   endpoints: [openApiSpecEndpoint],
 });

@@ -7,9 +7,7 @@ import { createDocument } from "./openapi";
 async function run() {
   const __filename = fileURLToPath(import.meta.url);
   const __dirname = dirname(__filename);
-  const doc = await createDocument(await config, {
-    exclude: { preferences: true },
-  });
+  const doc = await createDocument(await config);
   await fs.writeFile(
     path.resolve(__dirname, "payload-openapi.json"),
     JSON.stringify(doc, null, 2),

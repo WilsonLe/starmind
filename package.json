@@ -14,11 +14,12 @@
     "payload": "cross-env NODE_OPTIONS=--no-deprecation payload",
     "start": "cross-env NODE_OPTIONS=--no-deprecation next start",
     "format": "prettier --write src",
-    "generate:openapi": "tsx src/generate-openapi.ts",
-    "package": "tar -czvf starmind.tar.gz .next/standalone",
-    "transfer": "scp -r starmind.tar.gz starmind:starmind",
+    "generate:openapi": "tsx src/openapi/generate-openapi.ts && cp src/payload-openapi.json public/payload-openapi.json",
+    "package": "tar -czvf output.tar.gz .next/standalone",
+    "transfer": "scp -r output.tar.gz starmind:~/starmind/output.tar.gz",
+    "unpack": "ssh starmind 'cd starmind && tar -xzvf output.tar.gz'",
     "restart:prod": "ssh starmind 'systemctl restart starmind'",
-    "ship": "pnpm build && pnpm package && pnpm transfer && pnpm restart:prod"
+    "ship": "pnpm build && pnpm package && pnpm transfer && pnpm unpack && pnpm restart:prod"
   },
   "dependencies": {
     "@payloadcms/db-sqlite": "3.28.1",

@@ -1,4 +1,4 @@
-import { createDocument } from "./open-api";
+import { createDocument } from "./openapi";
 
 export { defineEndpoint } from "./config-extensions";
 export type { EndpointDocumentation, Example } from "./config-extensions";
