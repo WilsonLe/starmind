@@ -41,6 +41,7 @@ export const collectionSpecificOpenApiEndpoint = ({
     // actions are the top level keys of a path object
     const totalActions = Object.keys(paths).reduce((acc, path) => {
       const pathValue = paths[path];
+      pathValue;
       if (!pathValue) return acc;
       return acc + Object.keys(pathValue).length;
     }, 0);

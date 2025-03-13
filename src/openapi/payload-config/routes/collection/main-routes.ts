@@ -33,6 +33,7 @@ export const getMainRoutes = async (
       ...includeIfAvailable(collection, "read", {
         get: {
           summary: `Find paginated ${plural}`,
+          operationId: `find-${plural.toLowerCase()}`,
           description: `Find paginated ${plural}`,
           tags: [collection.slug],
           security: await getRouteAccess(collection, "read", options.access),
@@ -45,6 +46,7 @@ export const getMainRoutes = async (
       ...includeIfAvailable(collection, "create", {
         post: {
           summary: `Create a new ${singleItem}`,
+          operationId: `create-${singleItem.toLowerCase()}`,
           description: `Create a new ${singleItem}`,
           tags: [collection.slug],
           security: await getRouteAccess(collection, "create", options.access),
@@ -60,6 +62,7 @@ export const getMainRoutes = async (
       ...includeIfAvailable(collection, "read", {
         get: {
           summary: `Get a single ${singleItem} by its id`,
+          operationId: `get-${singleItem.toLowerCase()}`,
           description: `Get a single ${singleItem} by its id`,
           tags: [collection.slug],
           security: await getRouteAccess(collection, "read", options.access),
@@ -83,6 +86,7 @@ export const getMainRoutes = async (
       ...includeIfAvailable(collection, "update", {
         patch: {
           summary: `Updates a ${singleItem}`,
+          operationId: `update-${singleItem.toLowerCase()}`,
           description: `Updates a ${singleItem}`,
           tags: [collection.slug],
           security: await getRouteAccess(collection, "update", options.access),
@@ -106,6 +110,7 @@ export const getMainRoutes = async (
       ...includeIfAvailable(collection, "delete", {
         delete: {
           summary: `Deletes an existing ${singleItem}`,
+          operationId: `delete-${singleItem.toLowerCase()}`,
           description: `Deletes an existing ${singleItem}`,
           tags: [collection.slug],
           security: await getRouteAccess(collection, "delete", options.access),

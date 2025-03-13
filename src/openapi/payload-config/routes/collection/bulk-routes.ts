@@ -20,6 +20,7 @@ export const getBulkRoutes = async (
       ...includeIfAvailable(collection, "update", {
         patch: {
           summary: `Update multiple ${plural}`,
+          operationId: `update-many-${plural.toLowerCase()}`,
           description: `Update all ${plural} matching the where query`,
           tags: [collection.slug],
           security: await getRouteAccess(collection, "update", options.access),
@@ -39,6 +40,7 @@ export const getBulkRoutes = async (
       ...includeIfAvailable(collection, "delete", {
         delete: {
           summary: `Delete multiple ${plural}`,
+          operationId: `delete-many-${plural.toLowerCase()}`,
           description: `Delete all ${plural} matching the where query`,
           tags: [collection.slug],
           security: await getRouteAccess(collection, "delete", options.access),
