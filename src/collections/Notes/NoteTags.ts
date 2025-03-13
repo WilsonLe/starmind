@@ -7,6 +7,8 @@ export const NoteTags: CollectionConfig = {
   fields: [
     {
       name: "slug",
+      label: "Slug",
+      admin: { description: "Human-readble identifier for the tag" },
       type: "text",
       required: true,
       unique: true,
@@ -14,6 +16,8 @@ export const NoteTags: CollectionConfig = {
     },
     {
       name: "displayName",
+      label: "Display Name",
+      admin: { description: "The name of the tag" },
       type: "text",
       required: true,
       unique: true,

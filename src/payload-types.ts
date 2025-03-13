@@ -92,7 +92,7 @@ export interface Config {
   };
   globals: {};
   globalsSelect: {};
-  locale: null;
+  locale: 'en';
   user:
     | (User & {
         collection: 'users';
@@ -145,6 +145,9 @@ export interface AgentAuthOperations {
  */
 export interface User {
   id: number;
+  /**
+   * The role of the user
+   */
   role: 'admin';
   updatedAt: string;
   createdAt: string;
@@ -165,6 +168,9 @@ export interface User {
  */
 export interface Agent {
   id: number;
+  /**
+   * The creator of the note, could be a user or an agent
+   */
   createdBy:
     | {
         relationTo: 'users';
@@ -174,6 +180,9 @@ export interface Agent {
         relationTo: 'agents';
         value: number | Agent;
       };
+  /**
+   * The updator of the note, could be a user or an agent
+   */
   updatedBy:
     | {
         relationTo: 'users';
@@ -197,6 +206,9 @@ export interface Agent {
 export interface Media {
   id: number;
   alt: string;
+  /**
+   * The creator of the note, could be a user or an agent
+   */
   createdBy:
     | {
         relationTo: 'users';
@@ -206,6 +218,9 @@ export interface Media {
         relationTo: 'agents';
         value: number | Agent;
       };
+  /**
+   * The updator of the note, could be a user or an agent
+   */
   updatedBy:
     | {
         relationTo: 'users';
@@ -234,9 +249,21 @@ export interface Media {
  */
 export interface Note {
   id: number;
+  /**
+   * The title of the note
+   */
   title: string;
+  /**
+   * The content of the note
+   */
   content: string;
+  /**
+   * Tags associated with the note
+   */
   tags?: (number | NoteTag)[] | null;
+  /**
+   * The creator of the note, could be a user or an agent
+   */
   createdBy:
     | {
         relationTo: 'users';
@@ -246,6 +273,9 @@ export interface Note {
         relationTo: 'agents';
         value: number | Agent;
       };
+  /**
+   * The updator of the note, could be a user or an agent
+   */
   updatedBy:
     | {
         relationTo: 'users';
@@ -265,8 +295,17 @@ export interface Note {
  */
 export interface NoteTag {
   id: number;
+  /**
+   * Human-readble identifier for the tag
+   */
   slug: string;
+  /**
+   * The name of the tag
+   */
   displayName: string;
+  /**
+   * The creator of the note, could be a user or an agent
+   */
   createdBy:
     | {
         relationTo: 'users';
@@ -276,6 +315,9 @@ export interface NoteTag {
         relationTo: 'agents';
         value: number | Agent;
       };
+  /**
+   * The updator of the note, could be a user or an agent
+   */
   updatedBy:
     | {
         relationTo: 'users';

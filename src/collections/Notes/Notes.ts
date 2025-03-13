@@ -8,18 +8,21 @@ export const Notes: CollectionConfig = {
     {
       name: "title",
       label: "Title",
+      admin: { description: "The title of the note" },
       type: "text",
       required: true,
     },
     {
       name: "content",
       label: "Content",
+      admin: { description: "The content of the note" },
       type: "textarea",
       required: true,
     },
     {
       name: "tags",
       label: "Tags",
+      admin: { description: "Tags associated with the note" },
       type: "relationship",
       relationTo: "note-tags",
       hasMany: true,

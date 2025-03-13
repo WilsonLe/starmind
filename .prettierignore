@@ -1,3 +1,4 @@
 migrations/
 payload-types.ts
 importMap.js
+payload-openapi.json

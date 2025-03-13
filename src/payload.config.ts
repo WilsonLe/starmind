@@ -39,4 +39,8 @@ export default buildConfig({
   defaultDepth: 1,
   maxDepth: 2,
   plugins: [],
+  localization: {
+    locales: ["en"],
+    defaultLocale: "en",
+  },
 });

@@ -7,6 +7,7 @@ export const createdBy: RelationshipField = {
   hasMany: false,
   required: true,
   admin: {
+    description: "The creator of the note, could be a user or an agent",
     readOnly: true,
     position: "sidebar",
   },
@@ -46,6 +47,7 @@ export const updatedBy: RelationshipField = {
   hasMany: false,
   required: true,
   admin: {
+    description: "The updator of the note, could be a user or an agent",
     readOnly: true,
     position: "sidebar",
   },
